@@ -1,0 +1,4 @@
+# Local preview server files
+.local-server.pid
+.local-server.log
+.local-server-error.log
