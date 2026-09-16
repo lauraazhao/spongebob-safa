@@ -27,8 +27,6 @@ const characters = {
 };
 
 const cards = [...document.querySelectorAll(".character-card")];
-const player = document.querySelector("#now-playing");
-const stopButton = document.querySelector("#stop-button");
 
 let activeCard = null;
 let activeAudio = null;
@@ -40,9 +38,6 @@ function setPlayerState(character, isPlaying) {
     card.classList.toggle("is-playing", selected);
     card.setAttribute("aria-pressed", String(selected));
   });
-
-  player?.classList.toggle("is-active", isPlaying);
-  stopButton.hidden = !isPlaying;
 
 }
 
@@ -117,5 +112,4 @@ cards.forEach((card) => {
   card.addEventListener("click", () => playMessage(card));
 });
 
-stopButton.addEventListener("click", () => stopPlayback());
 window.addEventListener("beforeunload", () => stopPlayback({ keepMessage: false }));

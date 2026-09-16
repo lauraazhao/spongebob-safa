@@ -139,41 +139,7 @@ button { font: inherit; }
 
 .play-icon svg { width: 58%; height: 58%; }
 
-.now-playing {
-  position: relative;
-  min-height: 86px;
-  margin-top: 2.2rem;
-  padding: 1.1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: transparent;
-  border: 0;
-}
-
-.sound-bars { width: 32px; height: 30px; display: flex; align-items: center; justify-content: center; gap: 3px; }
-.sound-bars i { width: 3px; height: 5px; background: var(--peach); border-radius: 1rem; }
-.is-active .sound-bars i { animation: sound .65s ease-in-out infinite alternate; }
-.is-active .sound-bars i:nth-child(2) { animation-delay: -.3s; }
-.is-active .sound-bars i:nth-child(3) { animation-delay: -.5s; }
-.is-active .sound-bars i:nth-child(4) { animation-delay: -.15s; }
-
-.stop-button {
-  flex: 0 0 auto;
-  width: 2.7rem;
-  height: 2.7rem;
-  padding: 0;
-  display: grid;
-  place-items: center;
-  background: var(--ink);
-  border: 0;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.stop-button span { width: .75rem; height: .75rem; background: white; border-radius: 2px; }
-
 @keyframes pulse { to { transform: scale(1.25); } }
-@keyframes sound { to { height: 26px; } }
 
 @media (max-width: 620px) {
   body::before { background-position: center top; }
@@ -183,7 +149,6 @@ button { font: inherit; }
   .messages { padding: .75rem 1rem 3rem; }
   .character-grid { gap: 2rem; }
   .character-card { width: min(100%, 390px); }
-  .now-playing { padding-inline: .9rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
