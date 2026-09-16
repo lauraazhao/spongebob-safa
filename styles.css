@@ -55,6 +55,46 @@ button { font: inherit; }
   overflow: hidden;
 }
 
+.bubble-layer {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bubble-layer i {
+  position: absolute;
+  left: var(--left);
+  bottom: -100px;
+  width: var(--size);
+  height: var(--size);
+  border: 2px solid rgba(255, 255, 255, .72);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .72) 0 7%, rgba(255, 255, 255, .18) 18%, rgba(120, 232, 255, .12) 58%, rgba(255, 255, 255, .3) 100%);
+  box-shadow: inset -5px -7px 12px rgba(75, 190, 220, .18), 0 0 8px rgba(255, 255, 255, .32);
+  opacity: 0;
+  animation: bubble-rise var(--duration) linear var(--delay) infinite;
+}
+
+.bubble-layer i::after {
+  position: absolute;
+  top: 18%;
+  left: 21%;
+  width: 20%;
+  height: 12%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .82);
+  transform: rotate(-35deg);
+  content: "";
+}
+
+.hero,
+main {
+  position: relative;
+  z-index: 1;
+}
+
 .hero {
   position: relative;
   padding: clamp(.75rem, 2vw, 1.5rem) 1.25rem .5rem;
@@ -140,6 +180,13 @@ button { font: inherit; }
 .play-icon svg { width: 58%; height: 58%; }
 
 @keyframes pulse { to { transform: scale(1.25); } }
+@keyframes bubble-rise {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(.82); }
+  8% { opacity: .72; }
+  50% { transform: translate3d(var(--drift), -60vh, 0) scale(1); }
+  92% { opacity: .62; }
+  100% { opacity: 0; transform: translate3d(0, -125vh, 0) scale(1.08); }
+}
 
 @media (max-width: 620px) {
   body::before { background-position: center top; }
@@ -154,4 +201,5 @@ button { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .bubble-layer { display: none; }
 }
