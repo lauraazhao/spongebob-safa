@@ -113,19 +113,6 @@ h1, h2 {
 .messages {
   position: relative;
   padding: clamp(5rem, 10vw, 9rem) max(1.25rem, calc((100vw - 1180px) / 2)) 6rem;
-  background: rgba(242, 233, 221, .88);
-  border-block: var(--border);
-  -webkit-backdrop-filter: blur(9px);
-  backdrop-filter: blur(9px);
-}
-
-.messages::before {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: .16;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cpath d='M12 18h1M64 37h1M34 73h1' stroke='%23302b27' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-  content: "";
 }
 
 .section-heading { position: relative; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
@@ -134,62 +121,51 @@ h2 { font-size: clamp(3rem, 6vw, 5.6rem); }
 
 .character-grid {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 4.5rem);
 }
 
 .character-card {
-  --card-color: var(--peach);
   position: relative;
-  grid-column: span 2;
-  min-width: 0;
-  padding: 1rem;
+  width: min(100%, 460px);
+  padding: 0;
   color: var(--ink);
-  text-align: left;
-  background: var(--card-color);
-  border: var(--border);
-  border-radius: 8rem 8rem 1.2rem 1.2rem;
-  box-shadow: 5px 6px 0 var(--ink);
+  background: transparent;
+  border: 0;
   cursor: pointer;
-  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  transition: transform .2s ease, filter .2s ease;
 }
 
-.character-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 8px 11px 0 var(--ink); filter: saturate(1.06); }
-.character-card:active { transform: translate(3px, 4px); box-shadow: 2px 2px 0 var(--ink); }
-.character-card:focus-visible { outline: 4px solid #fff; outline-offset: -7px; }
-.character-card.is-playing { transform: translateY(-8px); box-shadow: 8px 11px 0 var(--ink); }
-.character-card.is-playing .play-icon { color: white; background: var(--ink); }
+.character-card:hover { transform: translateY(-6px); filter: saturate(1.08); }
+.character-card:active { transform: scale(.98); }
+.character-card:focus-visible { outline: 4px solid white; outline-offset: 6px; border-radius: 1rem; }
+.character-card.is-playing { transform: translateY(-6px); }
+.character-card.is-playing .play-icon { transform: scale(1.12); }
 .character-card.is-playing .play-icon svg { animation: pulse .8s ease-in-out infinite alternate; }
 
-.card-blue { --card-color: var(--blue); }
-.card-yellow { --card-color: var(--yellow); }
-.card-green { --card-color: var(--green); }
-.card-purple { --card-color: var(--purple); }
-
-.character-number { display: block; padding: .15rem .25rem; font-size: .65rem; font-weight: 700; letter-spacing: .12em; }
-.portrait { display: block; margin: .3rem auto .75rem; width: 100%; aspect-ratio: 1; }
+.portrait { display: block; width: 100%; aspect-ratio: 1; }
 .portrait img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .25s ease; }
-.character-card:hover .portrait img { transform: scale(1.04) rotate(2deg); }
-
-.character-info { display: block; padding: .4rem .25rem .15rem; border-top: 1.5px solid rgba(48, 43, 39, .5); }
-.character-info strong { display: block; margin-top: .7rem; font-family: "Fraunces", serif; font-size: clamp(1.15rem, 2vw, 1.5rem); }
-.character-info > span { display: block; margin-top: .15rem; font-size: .72rem; opacity: .72; }
+.character-card:hover .portrait img { transform: scale(1.025); }
 
 .play-icon {
   position: absolute;
-  right: .8rem;
-  bottom: .8rem;
-  width: 2.1rem;
-  height: 2.1rem;
+  right: 4%;
+  bottom: 4%;
+  width: clamp(2.8rem, 10vw, 4rem);
+  height: clamp(2.8rem, 10vw, 4rem);
   display: grid;
   place-items: center;
-  border: 1.5px solid var(--ink);
+  color: white;
+  background: var(--ink);
+  border: 2px solid white;
   border-radius: 50%;
-  transition: .2s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, .28);
+  transition: transform .2s ease;
 }
 
-.play-icon svg { width: 1.2rem; height: 1.2rem; }
+.play-icon svg { width: 58%; height: 58%; }
 
 .now-playing {
   position: relative;
@@ -199,10 +175,8 @@ h2 { font-size: clamp(3rem, 6vw, 5.6rem); }
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: var(--paper);
-  border: var(--border);
-  border-radius: 1rem;
-  box-shadow: 4px 5px 0 var(--ink);
+  background: transparent;
+  border: 0;
 }
 
 .now-playing > div:nth-child(2) { min-width: 0; flex: 1; }
@@ -243,20 +217,12 @@ footer {
   letter-spacing: .12em;
   text-align: center;
   text-transform: uppercase;
-  background: rgba(255, 250, 243, .82);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: transparent;
 }
 footer span { color: var(--peach); font-size: 1.6rem; }
 
 @keyframes pulse { to { transform: scale(1.25); } }
 @keyframes sound { to { height: 26px; } }
-
-@media (max-width: 900px) {
-  .character-grid { grid-template-columns: repeat(6, 1fr); gap: 1.2rem; }
-  .character-card { grid-column: span 2; }
-  .character-card:nth-child(4) { grid-column: 2 / span 2; }
-}
 
 @media (max-width: 620px) {
   body::before { background-position: center top; }
@@ -264,13 +230,8 @@ footer span { color: var(--peach); font-size: 1.6rem; }
   .hero::before { top: 12%; }
   .desktop-break { display: none; }
   .messages { padding-inline: 1rem; }
-  .character-grid { grid-template-columns: repeat(2, 1fr); gap: .85rem; }
-  .character-card { grid-column: span 1; padding: .7rem; border-radius: 6rem 6rem 1rem 1rem; box-shadow: 3px 4px 0 var(--ink); }
-  .character-card:nth-child(4) { grid-column: auto; }
-  .character-card:last-child { grid-column: 1 / -1; width: calc(50% - .425rem); justify-self: center; }
-  .character-info strong { font-size: 1.08rem; }
-  .character-info > span { padding-right: 1.6rem; font-size: .63rem; }
-  .play-icon { right: .55rem; bottom: .55rem; width: 1.8rem; height: 1.8rem; }
+  .character-grid { gap: 2rem; }
+  .character-card { width: min(100%, 390px); }
   .now-playing { padding-inline: .9rem; }
   footer { flex-direction: column; justify-content: center; }
   footer span { order: -1; }
