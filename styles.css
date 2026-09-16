@@ -101,7 +101,7 @@ button { font: inherit; }
 
 .character-card {
   position: relative;
-  width: min(100%, 460px);
+  width: min(68vw, 320px);
   padding: 0;
   color: var(--ink);
   background: transparent;
@@ -125,8 +125,8 @@ button { font: inherit; }
   position: absolute;
   right: 4%;
   bottom: 4%;
-  width: clamp(2.8rem, 10vw, 4rem);
-  height: clamp(2.8rem, 10vw, 4rem);
+  width: clamp(2.5rem, 8vw, 3.25rem);
+  height: clamp(2.5rem, 8vw, 3.25rem);
   display: grid;
   place-items: center;
   color: white;
@@ -148,7 +148,7 @@ button { font: inherit; }
   .birthday-title { width: min(76vw, 420px); }
   .messages { padding: .75rem 1rem 3rem; }
   .character-grid { gap: 2rem; }
-  .character-card { width: min(100%, 390px); }
+  .character-card { width: min(68vw, 280px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
