@@ -14,15 +14,17 @@ Then visit `http://localhost:8000`.
 
 ## Add the real audio messages
 
-1. Create an `assets/audio` folder.
-2. Add your audio files (MP3 is the most broadly supported format).
-3. In `script.js`, replace each character's `audioSrc: null` with its relative file path, for example:
+Add the five MP3 files below to `assets/audio`:
 
-```js
-audioSrc: "assets/audio/momo.mp3",
+```text
+assets/audio/momo.mp3
+assets/audio/pippin.mp3
+assets/audio/bibi.mp3
+assets/audio/olive.mp3
+assets/audio/nori.mp3
 ```
 
-Until real files are configured, the browser's built-in speech feature reads each placeholder message aloud. The visible `message` text in `script.js` can also be changed at any time.
+These paths are already configured in `script.js`. Until a file is uploaded, the browser's built-in speech feature reads that character's placeholder message aloud. The visible `message` text in `script.js` can also be changed at any time.
 
 ## Publish free with GitHub Pages
 

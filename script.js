@@ -2,27 +2,27 @@ const characters = {
   momo: {
     name: "Momo",
     message: "Happy birthday, Safa! I hope your day feels as warm and wonderful as you are.",
-    audioSrc: null,
+    audioSrc: "assets/audio/momo.mp3",
   },
   pippin: {
     name: "Pippin",
     message: "Safa, may twenty-four bring you big dreams, sweet surprises, and so many reasons to smile.",
-    audioSrc: null,
+    audioSrc: "assets/audio/pippin.mp3",
   },
   bibi: {
     name: "Bibi",
     message: "Happy twenty-fourth! Keep shining bright and making every room sunnier just by being in it.",
-    audioSrc: null,
+    audioSrc: "assets/audio/bibi.mp3",
   },
   olive: {
     name: "Olive",
     message: "Here is to another year of growing, blooming, and becoming even more beautifully you.",
-    audioSrc: null,
+    audioSrc: "assets/audio/olive.mp3",
   },
   nori: {
     name: "Nori",
     message: "One last birthday wish, Safa: may this year be full of magic, laughter, and love. You deserve it all.",
-    audioSrc: null,
+    audioSrc: "assets/audio/nori.mp3",
   },
 };
 
@@ -103,18 +103,22 @@ function playMessage(card) {
   setPlayerState(character, true);
 
   if (character.audioSrc) {
-    activeAudio = new Audio(character.audioSrc);
-    activeAudio.addEventListener("ended", () => {
+    const audio = new Audio(character.audioSrc);
+    let fallbackStarted = false;
+    activeAudio = audio;
+
+    const fallBackToPlaceholder = () => {
+      if (currentPlaybackId !== playbackId || fallbackStarted) return;
+      fallbackStarted = true;
+      if (activeAudio === audio) activeAudio = null;
+      speakPlaceholder(character, currentPlaybackId);
+    };
+
+    audio.addEventListener("ended", () => {
       if (currentPlaybackId === playbackId) stopPlayback();
     }, { once: true });
-    activeAudio.addEventListener("error", () => {
-      if (currentPlaybackId !== playbackId) return;
-      activeAudio = null;
-      speakPlaceholder(character, currentPlaybackId);
-    }, { once: true });
-    activeAudio.play().catch(() => {
-      if (currentPlaybackId === playbackId) speakPlaceholder(character, currentPlaybackId);
-    });
+    audio.addEventListener("error", fallBackToPlaceholder, { once: true });
+    audio.play().catch(fallBackToPlaceholder);
   } else {
     speakPlaceholder(character, currentPlaybackId);
   }

@@ -9,7 +9,7 @@
   --border: 2px solid var(--ink);
   font-family: "DM Sans", sans-serif;
   color: var(--ink);
-  background: var(--paper);
+  background: #28cbd1;
   font-synthesis: none;
 }
 
@@ -18,17 +18,30 @@
 html { scroll-behavior: smooth; }
 
 body {
+  position: relative;
   margin: 0;
   min-width: 320px;
+  background: #28cbd1;
+}
+
+body::before {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
   background:
-    radial-gradient(circle at 10% 8%, rgba(247, 206, 88, .2), transparent 19rem),
-    radial-gradient(circle at 90% 19%, rgba(194, 175, 216, .2), transparent 22rem),
-    var(--paper);
+    linear-gradient(rgba(255, 255, 255, .08), rgba(255, 255, 255, .08)),
+    url("assets/spongebob-background.jpg") center top / cover no-repeat;
+  content: "";
 }
 
 button { font: inherit; }
 
-.page-shell { overflow: hidden; }
+.page-shell {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
 
 .hero {
   position: relative;
@@ -71,7 +84,11 @@ h1, h2 {
   line-height: .98;
 }
 
-h1 { font-size: clamp(3.6rem, 10vw, 8.8rem); max-width: 1100px; }
+h1 {
+  max-width: 1100px;
+  font-size: clamp(3.6rem, 10vw, 8.8rem);
+  text-shadow: 0 2px 0 rgba(255, 250, 243, .8), 0 5px 22px rgba(255, 250, 243, .7);
+}
 h1 em { position: relative; color: var(--peach); font-style: italic; }
 h1 em::after {
   content: "";
@@ -88,6 +105,7 @@ h1 em::after {
   color: #625b55;
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.7;
+  text-shadow: 0 1px 8px rgba(255, 250, 243, .95);
 }
 
 .scroll-cue {
@@ -107,8 +125,10 @@ h1 em::after {
 .messages {
   position: relative;
   padding: clamp(5rem, 10vw, 9rem) max(1.25rem, calc((100vw - 1180px) / 2)) 6rem;
-  background: #f2e9dd;
+  background: rgba(242, 233, 221, .88);
   border-block: var(--border);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
 }
 
 .messages::before {
@@ -235,6 +255,9 @@ footer {
   letter-spacing: .12em;
   text-align: center;
   text-transform: uppercase;
+  background: rgba(255, 250, 243, .82);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 footer span { color: var(--peach); font-size: 1.6rem; }
 
@@ -249,6 +272,7 @@ footer span { color: var(--peach); font-size: 1.6rem; }
 }
 
 @media (max-width: 620px) {
+  body::before { background-position: center top; }
   .hero { min-height: 720px; }
   .hero::before { top: 12%; }
   .desktop-break { display: none; }
