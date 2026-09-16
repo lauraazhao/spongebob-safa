@@ -43,15 +43,15 @@ function setPlayerState(character, isPlaying) {
     card.setAttribute("aria-pressed", String(selected));
   });
 
-  player.classList.toggle("is-active", isPlaying);
+  player?.classList.toggle("is-active", isPlaying);
   stopButton.hidden = !isPlaying;
 
   if (character) {
-    playerLabel.textContent = isPlaying ? `Now playing · ${character.name}` : `Message from ${character.name}`;
-    playerMessage.textContent = character.message;
+    if (playerLabel) playerLabel.textContent = isPlaying ? `Now playing · ${character.name}` : `Message from ${character.name}`;
+    if (playerMessage) playerMessage.textContent = character.message;
   } else {
-    playerLabel.textContent = "Ready when you are";
-    playerMessage.textContent = "Choose a friend to begin";
+    if (playerLabel) playerLabel.textContent = "Ready when you are";
+    if (playerMessage) playerMessage.textContent = "Choose a friend to begin";
   }
 }
 
@@ -75,7 +75,7 @@ function stopPlayback({ keepMessage = true } = {}) {
 
 function speakPlaceholder(character, currentPlaybackId) {
   if (!("speechSynthesis" in window)) {
-    playerLabel.textContent = `Message from ${character.name}`;
+    if (playerLabel) playerLabel.textContent = `Message from ${character.name}`;
     return;
   }
 

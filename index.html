@@ -21,17 +21,16 @@
   <body>
     <div class="page-shell">
       <header class="hero">
-        <h1 class="visually-hidden">Happy 24th Birthday, Safa!</h1>
-        <img
-          class="birthday-title"
-          src="assets/birthday%20text.png"
-          alt=""
-          width="3215"
-          height="1816"
-        />
+        <h1>Happy 24th<br />Birthday, <em>Safa!</em></h1>
         <p class="intro">
           Tap to hear our messages :P
         </p>
+        <div class="scroll-cue" aria-hidden="true">
+          <span>The </span>
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="m7 10 5 5 5-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+          </svg>
+        </div>
       </header>
 
       <main>
@@ -80,10 +79,7 @@
 
           <div class="now-playing" id="now-playing" aria-live="polite">
             <div class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-            <div>
-              <span id="player-label">Ready when you are</span>
-              <strong id="player-message">Choose a friend to begin</strong>
-            </div>
+
             <button class="stop-button" id="stop-button" type="button" aria-label="Stop message" hidden>
               <span aria-hidden="true"></span>
             </button>
@@ -91,11 +87,6 @@
         </section>
       </main>
 
-      <footer>
-        <p>Made with a whole lot of love</p>
-        <span aria-hidden="true">♥</span>
-        <p>Twenty-four looks good on you</p>
-      </footer>
     </div>
   </body>
 </html>
