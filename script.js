@@ -1,28 +1,28 @@
 const characters = {
-  momo: {
-    name: "Momo",
+  aaron: {
+    name: "Aaron",
     message: "Happy birthday, Safa! I hope your day feels as warm and wonderful as you are.",
-    audioSrc: "assets/audio/momo.mp3",
+    audioSrc: "assets/audio/aaron.mp3",
   },
-  pippin: {
-    name: "Pippin",
+  gary: {
+    name: "Gary",
     message: "Safa, may twenty-four bring you big dreams, sweet surprises, and so many reasons to smile.",
-    audioSrc: "assets/audio/pippin.mp3",
+    audioSrc: "assets/audio/gary.mp3",
   },
-  bibi: {
-    name: "Bibi",
+  liny: {
+    name: "Liny",
     message: "Happy twenty-fourth! Keep shining bright and making every room sunnier just by being in it.",
-    audioSrc: "assets/audio/bibi.mp3",
+    audioSrc: "assets/audio/liny.mp3",
   },
-  olive: {
-    name: "Olive",
+  mike: {
+    name: "Mike",
     message: "Here is to another year of growing, blooming, and becoming even more beautifully you.",
-    audioSrc: "assets/audio/olive.mp3",
+    audioSrc: "assets/audio/mike.mp3",
   },
-  nori: {
-    name: "Nori",
+  laura: {
+    name: "Laura",
     message: "One last birthday wish, Safa: may this year be full of magic, laughter, and love. You deserve it all.",
-    audioSrc: "assets/audio/nori.mp3",
+    audioSrc: "assets/audio/laura.mp3",
   },
 };
 

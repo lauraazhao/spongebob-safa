@@ -17,11 +17,11 @@ Then visit `http://localhost:8000`.
 Add the five MP3 files below to `assets/audio`:
 
 ```text
-assets/audio/momo.mp3
-assets/audio/pippin.mp3
-assets/audio/bibi.mp3
-assets/audio/olive.mp3
-assets/audio/nori.mp3
+assets/audio/aaron.mp3
+assets/audio/gary.mp3
+assets/audio/liny.mp3
+assets/audio/mike.mp3
+assets/audio/laura.mp3
 ```
 
 These paths are already configured in `script.js`. Until a file is uploaded, the browser's built-in speech feature reads that character's placeholder message aloud. The visible `message` text in `script.js` can also be changed at any time.
