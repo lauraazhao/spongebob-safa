@@ -28,8 +28,6 @@ const characters = {
 
 const cards = [...document.querySelectorAll(".character-card")];
 const player = document.querySelector("#now-playing");
-const playerLabel = document.querySelector("#player-label");
-const playerMessage = document.querySelector("#player-message");
 const stopButton = document.querySelector("#stop-button");
 
 let activeCard = null;
@@ -46,13 +44,6 @@ function setPlayerState(character, isPlaying) {
   player?.classList.toggle("is-active", isPlaying);
   stopButton.hidden = !isPlaying;
 
-  if (character) {
-    if (playerLabel) playerLabel.textContent = isPlaying ? `Now playing · ${character.name}` : `Message from ${character.name}`;
-    if (playerMessage) playerMessage.textContent = character.message;
-  } else {
-    if (playerLabel) playerLabel.textContent = "Ready when you are";
-    if (playerMessage) playerMessage.textContent = "Choose a friend to begin";
-  }
 }
 
 function stopPlayback({ keepMessage = true } = {}) {
@@ -74,10 +65,7 @@ function stopPlayback({ keepMessage = true } = {}) {
 }
 
 function speakPlaceholder(character, currentPlaybackId) {
-  if (!("speechSynthesis" in window)) {
-    if (playerLabel) playerLabel.textContent = `Message from ${character.name}`;
-    return;
-  }
+  if (!("speechSynthesis" in window)) return;
 
   const utterance = new SpeechSynthesisUtterance(character.message);
   utterance.rate = 0.92;
