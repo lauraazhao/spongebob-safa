@@ -57,8 +57,7 @@ button { font: inherit; }
 
 .hero {
   position: relative;
-  min-height: min(820px, 100svh);
-  padding: clamp(4.5rem, 10vh, 8rem) 1.25rem 4rem;
+  padding: clamp(.75rem, 2vw, 1.5rem) 1.25rem .5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,15 +94,15 @@ h1, h2 {
 
 .birthday-title {
   display: block;
-  width: min(82vw, 680px);
+  width: min(72vw, 620px);
   height: auto;
-  margin: clamp(-4rem, -7vw, -2rem) auto;
+  margin: 0 auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 12px rgba(255, 250, 243, .48));
 }
 
 .intro {
-  margin: 2.4rem 0 0;
+  margin: .25rem 0 0;
   color: #625b55;
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.7;
@@ -112,10 +111,10 @@ h1, h2 {
 
 .messages {
   position: relative;
-  padding: clamp(5rem, 10vw, 9rem) max(1.25rem, calc((100vw - 1180px) / 2)) 6rem;
+  padding: 1rem max(1.25rem, calc((100vw - 1180px) / 2)) 4rem;
 }
 
-.section-heading { position: relative; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.section-heading { position: relative; margin-bottom: 1rem; }
 .kicker { margin-bottom: .7rem; color: #776e66; }
 h2 { font-size: clamp(3rem, 6vw, 5.6rem); }
 
@@ -226,10 +225,11 @@ footer span { color: var(--peach); font-size: 1.6rem; }
 
 @media (max-width: 620px) {
   body::before { background-position: center top; }
-  .hero { min-height: 720px; }
+  .hero { padding: .5rem .75rem 0; }
   .hero::before { top: 12%; }
+  .birthday-title { width: min(76vw, 420px); }
   .desktop-break { display: none; }
-  .messages { padding-inline: 1rem; }
+  .messages { padding: .75rem 1rem 3rem; }
   .character-grid { gap: 2rem; }
   .character-card { width: min(100%, 390px); }
   .now-playing { padding-inline: .9rem; }
